@@ -1,0 +1,33 @@
+-- Table: public.employee
+
+-- DROP TABLE public.employee;
+
+CREATE TABLE public.employee
+(
+    id integer NOT NULL DEFAULT nextval('employee_seq_id'::regclass),
+    ename character varying COLLATE pg_catalog."default",
+    edesignation character varying COLLATE pg_catalog."default",
+    esalary character varying COLLATE pg_catalog."default",
+    eemail character varying COLLATE pg_catalog."default",
+    ephone character varying COLLATE pg_catalog."default"
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.employee
+    OWNER to postgres;
+    
+    
+    sequence:
+    --------
+    -- SEQUENCE: public.employee_seq_id
+
+    -- DROP SEQUENCE public.employee_seq_id;
+
+       CREATE SEQUENCE public.employee_seq_id;
+
+       ALTER SEQUENCE public.employee_seq_id
+       OWNER TO postgres;
+    
