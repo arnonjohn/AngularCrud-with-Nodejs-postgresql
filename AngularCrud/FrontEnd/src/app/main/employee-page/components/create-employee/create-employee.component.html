@@ -1,0 +1,31 @@
+<form [formGroup]="employeeForm" (ngSubmit)="eSubmit()" autocomplete="off">
+  <!-- emp name -->
+  <div class="form-group">
+    <label for="ename">Employee name:</label>
+    <input type="text" class="form-control" id="ename" formControlName="ename">
+  </div>
+  <!-- emp designation -->
+  <div class="form-group">
+    <label for="edesignation">Employee designation:</label>
+    <input type="text" class="form-control" id="edesignation" formControlName="edesignation">
+  </div>
+  <!-- emp salary -->
+  <div class="form-group">
+    <label for="esalary">Employee salary:</label>
+    <input type="text" class="form-control" id="esalary" formControlName="esalary">
+  </div>
+  <!-- emp email -->
+  <div class="form-group">
+    <label for="eemail">Employee email:</label>
+    <input type="email" class="form-control" id="eemail" formControlName="eemail">
+  </div>
+  <!-- emp phone -->
+  <div class="form-group">
+    <label for="ephone">Employee phone:</label>
+    <input type="text" class="form-control" id="ephone" formControlName="ephone">
+  </div>
+
+  <button type="submit" mat-raised-button>Submit</button>
+</form>
+
+<button mat-raised-button routerLink="emplist">Emp list</button>

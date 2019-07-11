@@ -1,0 +1,105 @@
+<div class="container">
+  <table mat-table [dataSource]="empList" class="mat-elevation-z8" style="margin-top: 100px">
+    <!-- Employee name Column -->
+    <ng-container matColumnDef="ename">
+      <th mat-header-cell *matHeaderCellDef> Employee name </th>
+      <td mat-cell *matCellDef="let empList"> {{empList.ename |titlecase}} </td>
+    </ng-container>
+    <!-- Employee Designation Column -->
+    <ng-container matColumnDef="edesignation">
+      <th mat-header-cell *matHeaderCellDef>Employee Designation</th>
+      <td mat-cell *matCellDef="let empList">{{empList.edesignation | titlecase}}</td>
+    </ng-container>
+    <!-- Employee salary Column -->
+    <ng-container matColumnDef="esalary">
+      <th mat-header-cell *matHeaderCellDef>Employee Salary</th>
+      <td mat-cell *matCellDef="let empList">{{empList.esalary}}</td>
+    </ng-container>
+    <!-- Employee email Column -->
+    <ng-container matColumnDef="eemail">
+      <th mat-header-cell *matHeaderCellDef>Email address</th>
+      <td mat-cell *matCellDef="let empList">{{empList.eemail}}</td>
+    </ng-container>
+    <!-- Employee phone Column -->
+    <ng-container matColumnDef="ephone">
+      <th mat-header-cell *matHeaderCellDef>Contact no.</th>
+      <td mat-cell *matCellDef="let empList">{{empList.ephone}}</td>
+    </ng-container>
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let empList">
+        <button mat-stroked-button color="primary"(click)=openDialog(editEmp,empList.id)>edit</button>
+        <button mat-stroked-button color="warn" (click)=deleteEmplistbyId(empList.id)>del</button>
+      </td>
+
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let empList; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<br><br><br>
+<!-- Normal table -->
+<!-- <table>
+  <thead>
+    <th>ename</th>
+    <th>edesignation</th>
+    <th>esalary</th>
+    <th>eemail</th>
+    <th>ephone</th>
+    <th>actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let el of empList">
+      <td>{{el.ename}}</td>
+      <td>{{el.edesignation}}</td>
+      <td>{{el.esalary}}</td>
+      <td>{{el.eemail}}</td>
+      <td>{{el.ephone}}</td>
+      <td>
+        <button mat-raised-button (click)=openDialog(editEmp,el.id)>edit</button>
+        <button mat-raised-button (click)=deleteEmplistbyId(el.id)>del</button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+<!-- edit emp list -->
+
+<ng-template #editEmp class="modal-lg">
+  <form (ngSubmit)="updateEmp()" autocomplete="off" novalidate>
+    <!-- ename -->
+    <div class="form-group">
+      <input type="text" name="ename" [(ngModel)]="eList.ename" #ename="ngModel" class="form-control"
+        placeholder="Ename">
+    </div>
+    <!-- edesignation -->
+    <div class="form-group">
+      <input type="text" name="edesignation" [(ngModel)]="eList.edesignation" #edesignation="ngModel"
+        class="form-control" placeholder="Edesgination">
+    </div>
+    <!-- esalary -->
+    <div class="form-group">
+      <input type="text" name="esalary" [(ngModel)]="eList.esalary" #esalary="ngModel" class="form-control"
+        placeholder="Esalary">
+    </div>
+    <!-- eemail -->
+    <div class="form-group">
+      <input type="text" name="eemail" [(ngModel)]="eList.eemail" #eemail="ngModel" class="form-control"
+        placeholder=Eemail>
+    </div>
+    <!-- ephone -->
+    <div class="form-group">
+      <input type="text" name="ephone" [(ngModel)]="eList.ephone" #ephone="ngModel" class="form-control"
+        placeholder="Ephone">
+    </div>
+    <!-- update / delete buttons -->
+    <div>
+      <button mat-stroked-button color="primary" type="submit">update</button> 
+      <button mat-stroked-button color="warn" mat-dialog-close type="button">cancel</button>     
+    </div>
+  </form>
+
+</ng-template>
